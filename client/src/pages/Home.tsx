@@ -109,7 +109,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-2 text-primary text-glow"></h1>
-          <p className="text-light-dimmed text-lg md:text-xl font-light">Talwiinder</p>
+          <p className="text-light-dimmed text-lg md:text-xl font-light"></p>
         </motion.header>
 
         {/* Central May 13 display */}
