@@ -28,14 +28,33 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Simulate loading time for initial experience and auto-start music
+  // Force autoplay with multiple attempts and as early as possible
   useEffect(() => {
+    // Try to play immediately
+    setIsPlaying(true);
+
+    // Try again after a short delay
+    const quickTimer = setTimeout(() => {
+      setIsPlaying(true);
+    }, 500);
+
+    // And after loading is complete
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-      // Auto-play music when loading is complete
       setIsPlaying(true);
+      
+      // Add a click event to the document to help with autoplay restrictions
+      const playAudio = () => {
+        setIsPlaying(true);
+        document.removeEventListener('click', playAudio);
+      };
+      document.addEventListener('click', playAudio);
     }, 2000);
 
-    return () => clearTimeout(loadingTimer);
+    return () => {
+      clearTimeout(quickTimer);
+      clearTimeout(loadingTimer);
+    };
   }, []);
 
   // Handle audio time update
