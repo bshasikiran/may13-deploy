@@ -19,7 +19,7 @@ const lyrics = [
   { text: "Main Tera Hoya", startTime: 24, endTime: 27 }
 ];
 
-const KhayaalSongPath = '/api/song';
+const KhayaalSongPath = '/assets/khayaal.mp3';
 
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
